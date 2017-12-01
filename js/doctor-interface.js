@@ -2,9 +2,6 @@ import { doctor, ApplicationModule } from './../js/doctor.js';
 
 let displayData = function(response) {
   console.log(response);
-  // results.forEach(function(result){
-    // some code.
-  // });
 };
 
 ///////////////////

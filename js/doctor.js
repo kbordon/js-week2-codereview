@@ -40,7 +40,36 @@ export class ApplicationModule{
 
     promiseDrs.then(function(response){
       let body = JSON.parse(response);
-      displayData(body);
+      let drResults = [];
+      if (body.meta.count !== 0){
+        body.data.forEach(function(doctor){
+          let oneDr = {};
+          oneDr.firstName = doctor.profile.last_name;
+          drResults.push(oneDr);
+        })
+        // body.data.profile.last_name
+        // body.data.profile.first_name
+        // body.data.practices.forEach(function(practice){
+        //   practice.phones.forEach(function(phone){
+        //     if (phone.type === "landline") {
+        //       phone.number
+        //     }
+        //   })
+        //   practice.name
+        //   practice.accepts_new_patients
+        //   practice.visit_address.street
+        //   practice.visit_address.street2
+        //   practice.visit_address.city
+        //   practice.visit_address.zip
+        //   if (practice.hasKey("website") === true) {
+        //     practice.website
+        //   }
+        //
+        // })
+        //
+        //
+      }
+      displayData(drResults);
     }, function(error) {
       // displayErrors(error);
     });
