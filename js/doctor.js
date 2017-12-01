@@ -43,10 +43,29 @@ export class ApplicationModule{
       let drResults = [];
       if (body.meta.count !== 0){
         body.data.forEach(function(doctor){
+          // get the doctor's name
           let oneDr = {};
-          oneDr.firstName = doctor.profile.last_name;
+          oneDr.lastName = doctor.profile.last_name;
+          oneDr.firstName = doctor.profile.first_name;
+          // get all of the doctor's practices
+          let drPractices = [];
+          doctor.practices.forEach(function(practice){
+            let onePractice = {};
+            onePractice.name = practice.name;
+            onePractice.acceptsNewPatients = practice.accepts_new_patients;
+            onePractice.streetAddress = practice.visit_address.street;
+            if (practice.visit_address.hasOwnProperty("street2")) {
+              onePractice.streetAddress += ` ${practice.visit_address.street2}`;
+            }
+            onePractice.city = practice.visit_address.city;
+            onePractice.zip = practice.visit_address.zip;
+            drPractices.push(onePractice);
+
+          });
+          oneDr.practices = drPractices;
+
           drResults.push(oneDr);
-        })
+        });
         // body.data.profile.last_name
         // body.data.profile.first_name
         // body.data.practices.forEach(function(practice){
