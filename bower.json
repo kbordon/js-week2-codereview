@@ -1,0 +1,20 @@
+{
+  "name": "js_blank",
+  "description": "## Description ## Setup/Install ## Specs ## Known Bugs ## Technology ## Contact details _Email Kimberly at [kbordon@gmail.com](mailto:kbordon@gmail.com) for comments, questions, or concerns._ ## License _This software is licensed under the MIT license._",
+  "main": "gulpfile.js",
+  "authors": [
+    "Kimberly Bordon <kbordon@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1"
+  }
+}
