@@ -4,9 +4,25 @@
     <script src="build/js/vendor.min.js"></script>
     <script src="build/js/app.js" charset="text/javascript"></script>
     <!-- <link rel="stylesheet" href="/css/master.css"> -->
-    <title>doctor</title>
+    <title>Medic!</title>
   </head>
   <body>
+    <h1>Medic!</h1>
+    <form id="dr-search">
+      <input type="text" value="" placeholder="Enter what ails ya!" id="userAilment">
+      <br>
+      <input type="text" value="" placeholder="Enter your preferred healer, if you know them" id="userDr">
+      <br>
+      <button type="submit">MEDIC!</button>
+    </form>
+    <div id="results">
+      <div id="search">
+      </div>
+      <div id="errors">
+      </div>
+    </div>
+    <div id="recent">
+    </div>
 
   </body>
 </html>

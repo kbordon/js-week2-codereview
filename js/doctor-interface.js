@@ -1,12 +1,11 @@
 import { doctor, ApplicationModule } from './../js/doctor.js';
 
-
-
-function displayData(result) {
-  results.forEach(function(result){
-    $('#sample-list').append(`<li>${result}</li>`);
-  });
-}
+let displayData = function(response) {
+  console.log(response);
+  // results.forEach(function(result){
+    // some code.
+  // });
+};
 
 ///////////////////
 //when page loads//
@@ -16,5 +15,16 @@ $(document).ready(function(){
   let applicationModule = new ApplicationModule();
   applicationModule.testmethod();
 
-  applicationModule.getDoctors(displayData);
+  // enter form
+  $("#dr-search").submit(function(event){
+    event.preventDefault();
+
+    let userAilment = "menstrual cramps";
+    // $("#userAilment").val();
+    let userDr = "Alisun Bonville";
+    //$("#userDr").val();
+
+    applicationModule.getDoctors(userAilment, userDr, displayData);
+  });
+
 });
