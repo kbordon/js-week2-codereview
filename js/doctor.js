@@ -57,7 +57,11 @@ export class ApplicationModule{
           doctor.practices.forEach(function(practice){
             let onePractice = {};
             onePractice.name = practice.name;
-            onePractice.acceptsNewPatients = practice.accepts_new_patients;
+            if (practice.accepts_new_patients === true) {
+              onePractice.acceptsNewPatients = "yes";
+            } else {
+              onePractice.acceptsNewPatients = "no";
+            }
             practice.phones.forEach(function(phone){
               if (phone.type === "landline") {
                 onePractice.phone = phone.number;
@@ -68,6 +72,7 @@ export class ApplicationModule{
               onePractice.streetAddress += ` ${practice.visit_address.street2}`;
             }
             onePractice.city = practice.visit_address.city;
+            onePractice.state = practice.visit_address.state;
             onePractice.zip = practice.visit_address.zip;
             if (practice.hasOwnProperty("website") === true){
               onePractice.website = practice.website;
@@ -79,29 +84,9 @@ export class ApplicationModule{
 
           drResults.push(oneDr);
         });
-        // body.data.profile.last_name
-        // body.data.profile.first_name
-        // body.data.practices.forEach(function(practice){
-        //   practice.phones.forEach(function(phone){
-        //     if (phone.type === "landline") {
-        //       phone.number
-        //     }
-        //   })
-        //   practice.name
-        //   practice.accepts_new_patients
-        //   practice.visit_address.street
-        //   practice.visit_address.street2
-        //   practice.visit_address.city
-        //   practice.visit_address.zip
-        //   if (practice.hasKey("website") === true) {
-        //     practice.website
-        //   }
-        //
-        // })
-        //
-        //
       }
       displayData(drResults);
+      return drResults;
     }, function(error) {
       // displayErrors(error);
     });
