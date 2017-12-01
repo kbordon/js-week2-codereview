@@ -1,4 +1,4 @@
-import { Blank, ApplicationModule } from './../js/Blank.js';
+import { doctor, ApplicationModule } from './../js/doctor.js';
 
 
 
