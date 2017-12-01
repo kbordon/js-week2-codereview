@@ -43,22 +43,35 @@ export class ApplicationModule{
       let drResults = [];
       if (body.meta.count !== 0){
         body.data.forEach(function(doctor){
-          // get the doctor's name
+          // get the doctor's personal details
           let oneDr = {};
           oneDr.lastName = doctor.profile.last_name;
           oneDr.firstName = doctor.profile.first_name;
+          oneDr.bio = doctor.profile.bio;
+          oneDr.img = doctor.profile.image_url;
+          // could be undefined so leave out
+          // oneDr.specialty = doctor.specialties.name;
+          // oneDr.specialtyDesc = doctor.specialities.description;
           // get all of the doctor's practices
           let drPractices = [];
           doctor.practices.forEach(function(practice){
             let onePractice = {};
             onePractice.name = practice.name;
             onePractice.acceptsNewPatients = practice.accepts_new_patients;
+            practice.phones.forEach(function(phone){
+              if (phone.type === "landline") {
+                onePractice.phone = phone.number;
+              }
+            });
             onePractice.streetAddress = practice.visit_address.street;
             if (practice.visit_address.hasOwnProperty("street2")) {
               onePractice.streetAddress += ` ${practice.visit_address.street2}`;
             }
             onePractice.city = practice.visit_address.city;
             onePractice.zip = practice.visit_address.zip;
+            if (practice.hasOwnProperty("website") === true){
+              onePractice.website = practice.website;
+            }
             drPractices.push(onePractice);
 
           });
