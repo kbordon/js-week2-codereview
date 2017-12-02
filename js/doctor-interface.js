@@ -30,7 +30,7 @@ let displayData = function(doctors) {
         <div class="doctor-info">
           <h3><div class="plus" tabindex="0">+</div></h3> <span class="doctor-name">${doctor.lastName}, ${doctor.firstName}</span>
           <div class="doctor-details display-details">
-            <p class="bio">${doctor.bio}</p>
+            <p class="bio" tabindex="0">${doctor.bio}</p>
             <div class="all-practices">
               ${practiceString}
             </div>
