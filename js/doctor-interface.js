@@ -1,10 +1,14 @@
 import { ApplicationModule, formatPhone } from './../js/doctor.js';
 
+// If API makes incorrect request, displays error details
 let displayError = function(message, code) {
   $("#errors").append(`<h1>😰 <em>Oh dear!</em></h1><h1>Looks like we hit <span class="urgent">${code}</span>!</h1><h2>In other words: ${message}.</h2>`);
   $("#errors").css("padding", "30px");
 };
+
+// If API call makes successful request, display data
 let displayData = function(doctors) {
+  // If returns at least one doctor
   if (doctors.length !== 0){
     let practiceString = "";
     doctors.forEach(function(doctor){
@@ -34,13 +38,19 @@ let displayData = function(doctors) {
         </div>`);
 
     });
+
+  // If no doctors match the search
   } else {
     $("#search").append(`<div class="oops"><h1>😓</h1><p>No luck with that search! Maybe try rewording your ailment, or checking your entered doctor's name...<p></div>`);
   }
+  // Adds width to make results visible
   $("#search").css("width", 450);
 
+  // User can click on the names returned by results to view more information
   $(".doctor-info").click(function(){
+    // hide or show the details (remove or add the "display-details" class)
     $(this).find(".doctor-details").toggleClass("display-details");
+    // TODO this section can be refactored maybe to just toggle, since it no longer is dependent on other code.
     if($(this).find(".plus").hasClass("plus-rotate") === true){
       $(this).find(".plus").removeClass("plus-rotate");
       $(".doctor-info").show();
@@ -56,6 +66,10 @@ let displayData = function(doctors) {
     }
   });
 
+  $(".bio").click(function(){
+    console.log("clicked the bio");
+  })
+
 };
 
 ///////////////////
@@ -70,18 +84,20 @@ $(document).ready(function(){
   // enter form
   $("#dr-search").submit(function(event){
     event.preventDefault();
+    // Makes sure both search and error divs are not visible when empty
     $("#search").css("width", 0);
     $("#errors").css("padding", 0);
 
-
+    // Get form information
     let userAilment = $("#userAilment").val();
     let userDr = $("#userDr").val();
-    // "Alisun Bonville";
 
 
-    // empty result page before getting more
-    $("#search").empty();
+    // Empty results and errors before getting more
+    $("#search, #errors").empty();
     let newSearch = applicationModule.getDoctors(userAilment, userDr, displayData, displayError);
+
+    // this is to keep track of searches
     allSearches.push(newSearch);
   });
 
