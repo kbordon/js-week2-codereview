@@ -1,5 +1,8 @@
 import { doctor, ApplicationModule } from './../js/doctor.js';
 
+let displayError = function(message, code) {
+  $("#errors").append(`<h1 class="oops">😓</h1><h1>Oh dear! Looks like we hit ${code}!</h1><h4>In other words, ${message}.`)
+}
 let displayData = function(doctors) {
   if (doctors.length !== 0){
     let practiceString = "";
@@ -12,15 +15,23 @@ let displayData = function(doctors) {
         practiceString += `<div class="practice"><h4>${practice.name}</h4><p>Accepting new patients: ${practice.acceptsNewPatients}</p><p>${practice.streetAddress}</p><p>${practice.city}, ${practice.state} ${practice.zip}</p><p>${practice.phone}</p><p><a href="${practiceWeb}">${practiceWeb}</a></div>`;
       });
       $("#search").append(`<div class="doctor-info">
-      <span class="dr-name"><h3>${doctor.lastName}, ${doctor.firstName}</h3></span>
-      <div class="doctor-details">
-        <p>${doctor.bio}</p>
+      <h3>${doctor.lastName}, ${doctor.firstName}</h3>
+      <div class="doctor-details display-details">
+        <p class="bio">${doctor.bio}</p>
         ${practiceString}
       </div>
       </div>`);
     });
+  } else {
+    $("#search").empty();
+    $("#search").append(`<h1 class="oops">😓</h1>No luck with that search! Maybe try rewording your ailment, or checking your entered doctor's name...`);
   }
-  console.log(doctors);
+  $(".doctor-info").click(function(){
+    $("#recent").append(`<p>${$(this).find("h3").html()}</p>`);
+    console.log("is this click working!")
+
+    $(this).find(".doctor-details").toggleClass("display-details");
+  });
 };
 
 ///////////////////
@@ -36,13 +47,13 @@ $(document).ready(function(){
   $("#dr-search").submit(function(event){
     event.preventDefault();
 
-    let userAilment =
-    "menstrual cramps";
-    // $("#userAilment").val();
-    let userDr =
-    "Alisun Bonville";
-    // $("#userDr").val();
+    let userAilment = $("#userAilment").val();
+    let userDr = $("#userDr").val();
+    // "Alisun Bonville";
 
+
+    // empty result page before getting more
+    $("#search").empty();
     let newSearch = applicationModule.getDoctors(userAilment, userDr, displayData);
     allSearches.push(newSearch);
   });

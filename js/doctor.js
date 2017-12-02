@@ -31,7 +31,7 @@ export class ApplicationModule{
           // console.log(reponseDrs);
         } else {
           // console.log(requestDrs.reponse.meta.message);
-          reject(Error(requestDrs.response.meta.message));
+          reject(requestDrs.reponse);
         }
       };
       requestDrs.open("GET", urlDrs, true);
@@ -88,17 +88,11 @@ export class ApplicationModule{
       displayData(drResults);
       return drResults;
     }, function(error) {
-      // displayErrors(error);
+      let errorBody = JSON.parse(error);
+      displayError(errorBody.meta.message, errorBody.http_status_code);
     });
 
 
-    // tutorial for separating logic uses ajax
-    // $.get(`` + userInput + apiKey)
-    //   .then(function(results) {
-    //     displayData(results);
-    //   })
-    //   .fail(function() {
-    //     console.log(`Something went wrong.`);
-    //   });
+
   }
 }
