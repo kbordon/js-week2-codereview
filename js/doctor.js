@@ -18,7 +18,7 @@ export class ApplicationModule{
     console.log("this is a test method in applicationModule");
   }
 
-  getDoctors(userQuery, userDr, displayData) {
+  getDoctors(userQuery, userDr, displayData, displayError) {
     let promiseDrs = new Promise(function(resolve, reject){
       let requestDrs = new XMLHttpRequest();
       let urlDrs = `https://api.betterdoctor.com/2016-03-01/doctors?name=${userDr}&query=${userQuery}&location=or-portland&sort=best-match-desc&skip=0&limit=10&user_key=${apiKey}`;
@@ -31,7 +31,7 @@ export class ApplicationModule{
           // console.log(reponseDrs);
         } else {
           // console.log(requestDrs.reponse.meta.message);
-          reject(requestDrs.reponse);
+          reject(requestDrs.responseText);
         }
       };
       requestDrs.open("GET", urlDrs, true);
@@ -89,7 +89,8 @@ export class ApplicationModule{
       return drResults;
     }, function(error) {
       let errorBody = JSON.parse(error);
-      displayError(errorBody.meta.message, errorBody.http_status_code);
+      console.log(errorBody);
+      displayError(errorBody.meta.message, errorBody.meta.http_status_code);
     });
 
 

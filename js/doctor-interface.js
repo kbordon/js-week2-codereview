@@ -1,7 +1,8 @@
 import { doctor, ApplicationModule } from './../js/doctor.js';
 
 let displayError = function(message, code) {
-  $("#errors").append(`<h1 class="oops">😓</h1><h1>Oh dear! Looks like we hit ${code}!</h1><h4>In other words, ${message}.`);
+  $("#errors").append(`<h1>😰 <em>Oh dear!</em></h1><h1>Looks like we hit <span class="urgent">${code}</span>!</h1><h2>In other words: ${message}.</h2>`);
+  $("#errors").css("padding", "30px");
 };
 let displayData = function(doctors) {
   if (doctors.length !== 0){
@@ -65,6 +66,8 @@ $(document).ready(function(){
   $("#dr-search").submit(function(event){
     event.preventDefault();
     $("#search").css("width", 0);
+    $("#errors").css("padding", 0);
+
 
     let userAilment = $("#userAilment").val();
     let userDr = $("#userDr").val();
@@ -73,7 +76,7 @@ $(document).ready(function(){
 
     // empty result page before getting more
     $("#search").empty();
-    let newSearch = applicationModule.getDoctors(userAilment, userDr, displayData);
+    let newSearch = applicationModule.getDoctors(userAilment, userDr, displayData, displayError);
     allSearches.push(newSearch);
   });
 
