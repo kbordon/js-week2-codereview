@@ -93,7 +93,7 @@ $(document).ready(function(){
     $("#search, #errors").empty();
     let newSearch = applicationModule.getDoctors(userAilment, userDr, displayData, displayError);
 
-    // this is to keep track of searches
+    // this is to keep track of searches eventually
     allSearches.push(newSearch);
   });
 
