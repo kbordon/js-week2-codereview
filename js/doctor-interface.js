@@ -28,7 +28,7 @@ let displayData = function(doctors) {
       });
       $("#search").append(`
         <div class="doctor-info">
-          <h3><div class="plus">+</div></h3> <span class="doctor-name">${doctor.lastName}, ${doctor.firstName}</span>
+          <h3><div class="plus" tabindex="0">+</div></h3> <span class="doctor-name">${doctor.lastName}, ${doctor.firstName}</span>
           <div class="doctor-details display-details">
             <p class="bio">${doctor.bio}</p>
             <div class="all-practices">
@@ -46,25 +46,66 @@ let displayData = function(doctors) {
   // Adds width to make results visible
   $("#search").css("width", 450);
 
-  // User can click on the names returned by results to view more information
-  $(".doctor-info").click(function(){
-    // hide or show the details (remove or add the "display-details" class)
-    $(this).find(".doctor-details").toggleClass("display-details");
-    // TODO this section can be refactored maybe to just toggle, since it no longer is dependent on other code.
-    if($(this).find(".plus").hasClass("plus-rotate") === true){
-      $(this).find(".plus").removeClass("plus-rotate");
-      $(".doctor-info").show();
-      // to show recently viewed doctors
-      // $("#recent").append(`<p>${$(this).find(".doctor-name").html()}</p>`);
-      // console.log("added rotate");
-    } else {
-      // This will only show one doctors information at a time
-      $(".doctor-info").hide();
-      $(this).show();
-      $(this).find(".plus").addClass("plus-rotate");
-      // console.log("removed rotate");
-    }
+  $(function(){
+
+    $('.plus').on('keypress click', function(e){
+      if (e.which === 13 || e.type === 'click') {
+        if ($(this).hasClass("plus-rotate") === true){
+          // console.log("targetted the rotated-plus");
+          $(this).parent().parent(".doctor-info").find(".display-details").hide();
+          $(this).removeClass("plus-rotate");
+          $(".doctor-info").show();
+        } else {
+          // hide all other doctor info
+          $(".doctor-info").hide();
+          // probably don't need the display-details class, but can't remove since not sure where else it is referenced
+          $(this).parent().parent(".doctor-info").find(".display-details").show();
+          $(this).parent().parent(".doctor-info").show();
+          $(this).addClass("plus-rotate");
+
+        }
+      }
+    });
+
   });
+  // original plus startshere ---->
+  // $(".plus").click(function(){
+  //   if ($(this).hasClass("plus-rotate") === true){
+  //     // console.log("targetted the rotated-plus");
+  //     $(this).parent().parent(".doctor-info").find(".display-details").hide();
+  //     $(this).removeClass("plus-rotate");
+  //     $(".doctor-info").show();
+  //   } else {
+  //     // hide all other doctor info
+  //     $(".doctor-info").hide();
+  //     // probably don't need the display-details class, but can't remove since not sure where else it is referenced
+  //     $(this).parent().parent(".doctor-info").find(".display-details").show();
+  //     $(this).parent().parent(".doctor-info").show();
+  //     $(this).addClass("plus-rotate");
+  //
+  //   }
+  // });
+//---- this ends here
+
+  // User can click on the names returned by results to view more information
+  // $(".doctor-info").click(function(){
+  //   // hide or show the details (remove or add the "display-details" class)
+  //   $(this).find(".doctor-details").toggleClass("display-details");
+  //   // TODO this section can be refactored maybe to just toggle, since it no longer is dependent on other code.
+  //   if($(this).find(".plus").hasClass("plus-rotate") === true){
+  //     $(this).find(".plus").removeClass("plus-rotate");
+  //     $(".doctor-info").show();
+  //     // to show recently viewed doctors
+  //     // $("#recent").append(`<p>${$(this).find(".doctor-name").html()}</p>`);
+  //     // console.log("added rotate");
+  //   } else {
+  //     // This will only show one doctors information at a time
+  //     $(".doctor-info").hide();
+  //     $(this).show();
+  //     $(this).find(".plus").addClass("plus-rotate");
+  //     // console.log("removed rotate");
+  //   }
+  // });
 
 };
 

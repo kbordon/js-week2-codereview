@@ -226,6 +226,14 @@ button:hover {
   color: red;
 }
 
+.plus:focus {
+	outline: none !important;
+	color: red;
+	text-shadow: 1px 1px white;
+}
+
+
+/* TODO are either of these used?
 .plus-no-rotate {
   color: inherit;
   transform: rotate(0deg);
@@ -234,7 +242,7 @@ button:hover {
 
 .plus-no-rotate:hover {
   color: white;
-}
+}*/
 
 .plus-rotate {
   color: red;
