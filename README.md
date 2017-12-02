@@ -1,22 +1,38 @@
 # Medic!
-## A Doctor Search Application for Epidocus Code Review _(2017.12.01)_
+## A Doctor Search Application (Asynchrony and APIs Code Review _12.01.2017_)
 ### By Kimberly Bordon
 
 ## Description
+_This is an application that will allow a user to retrieve a list of up to 10 doctors in proximity to Portland, OR. The user can enter their health concern and/or a specific doctor's name, and the app will use Javascript to call an API to retrieve doctors that best match the user's input. If the API's response is successful it will show either a list of doctors, or a message saying none matched the search. If the API does not return a successful response, the page will instead display an error message detailing why the request failed._
 
 ## Specs
 | Behavior | Input | Output |
 |-|-|-|
-| The User can enter in a medical issue, such as "back pain", and they will receive a list of doctors in the Portland area. | User enters:<br> back pain | Search returns list of doctors by name |
+| The User can enter in a medical issue, such as "back pain", and they will receive a list of doctors in the Portland area. | User enters:<br> "back pain" | Search returns list of doctors by name |
 | The User can enter in a name of a doctor, full or partial, and they will receive a list of the doctors in the Portland area closest to their search. | User enters: "Nick Riviera" | Search returns list of doctors by name |
 | The User can enter in either a medical issue and/or doctor name, and they will receive a list of doctors. | User enters: <br> "Angela Ziegler" <br> "low health points" | Search returns list of doctors by name. |
 | The User can enter a medical issue and/or doctor name, and if none are found, then the app will display that information. | User enters: <br> "Zoidberg" | Page shows message: "Sorry, your search returned 0 results. Please adjust your search entries, and try again!" |
 | If the User's search results in an error, it will display the error. | User enters a search, and page creates a bad request. | Page shows message: <br> "Error! Please enter a valid search." |
 | The User can click on one of the Doctor's names on the result list for more of that doctor's information. | User clicks "Nick Riviera" | Page displays more information in that space: <br> Nick Riviera <br>Accepting new patients: yes<br> A Totally Safe Clinic<br> 44 Bow Street<br>Portland, OR<br>91234<br>1-600-DOCTORB<br>http://doctorb.com<br> IMG*<br>bio* |
-| * The app will keep track of doctors that were viewed, and allow the user to click to view that doctors information. | User clicks doctor in recently viewed list. | Page display's doctor's information. |
+
+### Wishlist Specs
+| Behavior | Input | Output |
+|-|
+| The app will keep track of doctors that were viewed, and allow the user to click to view that doctors information. | User clicks doctor in recently viewed list. | Page display's doctor's information. |
 
 ## Setup/Install
-#### This app uses the BetterDoctor API key which must be stored in an .env file in the top level of the repository.
+
+* Make sure you have [Node](https://nodejs.org/en/download/) and the npm (Node package manager, which should come automatically) installed.
+* Go to [this repository page](https://github.com/kbordon/js-week2-codereview), and clone the project.
+* Navigate to top level folder of the cloned repository in terminal or powershell, and enter the following commands:
+```
+$ npm install
+$ bower install
+```
+
+### ATTENTION: Before you run any code beyond this point, please read the following.
+
+This app uses the BetterDoctor API key which must be stored in an .env file in the top level of the repository. This repository does _not_ with come with its own `.env` file, and will specifically exclude any from commits in the `.gitignore` file.
 
 * **You must make this file with _your own API key_**, which you can obtain by visiting the [BetterDoctor API](https://developer.betterdoctor.com/) website, and clicking _"Get a free API key"_.
 * Fill out their form, and your API key should be listed on the front page or under _My Account > Applications_.
@@ -28,15 +44,43 @@
 exports.apiKey = << YOUR API KEY >>;
 ```
 * Replace _<< YOUR API KEY >>_ with your newly obtained API key.
+* Remember should you make any commits, or push any code afterwards, when you clone it to a different destination, you will have to recreate this file.
 
+
+#### Testing
+Although this project has a test file and framework set up, there are no actual tests written for this project as I truthfully had not really made any backend logic to test other than the code to handle the API calls.
+
+* If you would like to add any code to this project, and then test it, you can write your tests in the file `spec/doctor-spec.js`.
+* Alternatively, you can create your own test file in the same location as this file, and making sure the filename ends with the extension `-spec.js`.
+* In order to run tests, from the top level of the project folder, run this command in terminal: `$ npm test`
+
+#### Running/Production
+* To build project, enter the following:
+```
+$ gulp build
+$ gulp serve
+```
+
+* To build the project to be production ready, add the production flag to the build command like so:
+`$ gulp build --production`
 
 
 ## Known Bugs
-## Technology Used
-* Node
+There currently no known bugs.
 
+## Technology Used
+* [BetterDoctor API](https://developer.betterdoctor.com/)
+* Node
+* Bower
+* Jasmine
+* Karma
+* ... and many more packages. In top level of project folder, open `package.json` and `bower.json` in Atom (or your preferred text editor) and look for `"devDependencies"` and `"dependencies"` respectively to see the entire list.
+* jQuery
 * Speech Bubble styling credit to [Bubbly](https://leaverou.github.io/bubbly/)
+
 ## Contact details
 _Email Kimberly at [kbordon@gmail.com](mailto:kbordon@gmail.com) for comments, questions, or concerns._
 ## License
-_This software is licensed under the MIT license._
+*This software is licensed under the MIT license.*
+
+Copyright © 2017 **Kimberly Bordon**
