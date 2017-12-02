@@ -43,11 +43,16 @@ let displayData = function(doctors) {
     $(this).find(".doctor-details").toggleClass("display-details");
     if($(this).find(".plus").hasClass("plus-rotate") === true){
       $(this).find(".plus").removeClass("plus-rotate");
-      $("#recent").append(`<p>${$(this).find(".doctor-name").html()}</p>`);
-      console.log("added rotate");
+      $(".doctor-info").show();
+      // to show recently viewed doctors
+      // $("#recent").append(`<p>${$(this).find(".doctor-name").html()}</p>`);
+      // console.log("added rotate");
     } else {
+      // This will only show one doctors information at a time
+      $(".doctor-info").hide();
+      $(this).show();
       $(this).find(".plus").addClass("plus-rotate");
-      console.log("removed rotate");
+      // console.log("removed rotate");
     }
   });
 
