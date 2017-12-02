@@ -15,7 +15,15 @@ export class ApplicationModule{
   constructor(){}
 
   testmethod(){
-    console.log("this is a test method in applicationModule");
+    // console.log("this is a test method in applicationModule");
+  }
+
+  formatPhone(number){
+    if(number.length === 10) {
+      number = `(${number.substr(0,3)}) ${number.substr(3,3)}-${number.substr(6,4)}`;
+    }
+    console.log(number);
+    return number;
   }
 
   getDoctors(userQuery, userDr, displayData, displayError) {
