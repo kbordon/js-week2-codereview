@@ -66,10 +66,6 @@ let displayData = function(doctors) {
     }
   });
 
-  $(".bio").click(function(){
-    console.log("clicked the bio");
-  })
-
 };
 
 ///////////////////

@@ -160,6 +160,8 @@ button:hover {
 
 .bio {
   width: 300px;
+	height: 200px;
+	overflow-y: auto;
   line-height: 1.5;
   background-color: powderblue;
   padding: 20px;

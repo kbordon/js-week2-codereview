@@ -14,7 +14,6 @@ export function formatPhone(number){
   if(number.length === 10) {
     number = `(${number.substr(0,3)}) ${number.substr(3,3)}-${number.substr(6,4)}`;
   }
-  console.log(number);
   return number;
 }
 
