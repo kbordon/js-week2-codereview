@@ -48,8 +48,6 @@ exports.apiKey = << YOUR API KEY >>;
 
 
 #### Testing
-Although this project has a test file and framework set up, there are no actual tests written for this project as I truthfully had not really made any backend logic to test other than the code to handle the API calls.
-
 * If you would like to add any code to this project, and then test it, you can write your tests in the file `spec/doctor-spec.js`.
 * Alternatively, you can create your own test file in the same location as this file, and making sure the filename ends with the extension `-spec.js`.
 * In order to run tests, from the top level of the project folder, run this command in terminal: `$ npm test`

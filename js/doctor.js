@@ -10,20 +10,20 @@ export class doctor{
   }
 }
 
+export function formatPhone(number){
+  if(number.length === 10) {
+    number = `(${number.substr(0,3)}) ${number.substr(3,3)}-${number.substr(6,4)}`;
+  }
+  console.log(number);
+  return number;
+}
+
 
 export class ApplicationModule{
   constructor(){}
 
   testmethod(){
     // console.log("this is a test method in applicationModule");
-  }
-
-  formatPhone(number){
-    if(number.length === 10) {
-      number = `(${number.substr(0,3)}) ${number.substr(3,3)}-${number.substr(6,4)}`;
-    }
-    console.log(number);
-    return number;
   }
 
   getDoctors(userQuery, userDr, displayData, displayError) {
@@ -33,12 +33,7 @@ export class ApplicationModule{
       requestDrs.onload = function() {
         if (this.status === 200) {
           resolve(requestDrs.response);
-          console.log("did this happen? this is succesful in the onload");
-          // the below was successful and should be put into the promises then
-          // let reponseDrs = JSON.parse(this.responseText);
-          // console.log(reponseDrs);
         } else {
-          // console.log(requestDrs.reponse.meta.message);
           reject(requestDrs.responseText);
         }
       };
@@ -100,7 +95,6 @@ export class ApplicationModule{
       console.log(errorBody);
       displayError(errorBody.meta.message, errorBody.meta.http_status_code);
     });
-
 
 
   }

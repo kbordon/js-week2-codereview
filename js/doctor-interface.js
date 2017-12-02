@@ -1,4 +1,4 @@
-import { doctor, ApplicationModule } from './../js/doctor.js';
+import { ApplicationModule, formatPhone } from './../js/doctor.js';
 
 let displayError = function(message, code) {
   $("#errors").append(`<h1>😰 <em>Oh dear!</em></h1><h1>Looks like we hit <span class="urgent">${code}</span>!</h1><h2>In other words: ${message}.</h2>`);
@@ -18,7 +18,7 @@ let displayData = function(doctors) {
                             <p>Accepting new patients: ${practice.acceptsNewPatients}</p>
                             <p>${practice.streetAddress}</p>
                             <p>${practice.city}, ${practice.state} ${practice.zip}</p>
-                            <p>${practice.phone}</p>
+                            <p>${formatPhone(practice.phone)}</p>
                             <p><a href="${practiceWeb}">${practiceWeb}</a></p>
                           </div>`;
       });
