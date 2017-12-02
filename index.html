@@ -8,22 +8,32 @@
   </head>
   <body>
     <div class="home-wrapper">
-      <h1>Medic!</h1>
-      <div class="search-wrapper">
-        <form id="dr-search">
-          <input type="text" value="" placeholder="Enter what ails ya!" id="userAilment">
-          <br>
-          <input type="text" value="" placeholder="Enter your preferred healer, if you know them" id="userDr">
-          <br>
-          <button type="submit">Aid Me</button>
-        </form>
+      <div class="form-wrapper">
+        <div class="speech-bubble">
+          <h1>Medic!</h1>
+        </div>
+        <div class="search-wrapper">
+          <div class="speech-bubble-form">
+            <form id="dr-search">
+                <h2> No worries, we got you. </h2>
+                <p>But first, some info might be helpful! Feel free to either question, neither, or both.</p>
+                <p>What ails you so?</p>
+                <input type="text" value="" id="userAilment">
+                <p>Anyone you'd prefer specifically?</p>
+                <input type="text" value="" id="userDr">
+                <br>
+                <button type="submit">Aid Me</button>
+            </div>
 
-        <!-- <div class="recent-wrapper">
-        this part needs some tweaking
-          <p>Recently Viewed Doctors</p>
-          <div id="recent">
-          </div>
-        </div> -->
+            </form>
+
+          <!-- <div class="recent-wrapper">
+          this part needs some tweaking
+            <p>Recently Viewed Doctors</p>
+            <div id="recent">
+            </div>
+          </div> -->
+        </div>
       </div>
       <div id="results">
         <div id="search">

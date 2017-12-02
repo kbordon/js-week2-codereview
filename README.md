@@ -33,6 +33,9 @@ exports.apiKey = << YOUR API KEY >>;
 
 ## Known Bugs
 ## Technology Used
+* Node
+
+* Speech Bubble styling credit to [Bubbly](https://leaverou.github.io/bubbly/)
 ## Contact details
 _Email Kimberly at [kbordon@gmail.com](mailto:kbordon@gmail.com) for comments, questions, or concerns._
 ## License

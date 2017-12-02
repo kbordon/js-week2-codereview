@@ -24,14 +24,15 @@ let displayData = function(doctors) {
     });
   } else {
     $("#search").empty();
-    $("#search").append(`<h1 class="oops">😓</h1>No luck with that search! Maybe try rewording your ailment, or checking your entered doctor's name...`);
+    $("#search").append(`<div class="oops"><h1>😓</h1><p>No luck with that search! Maybe try rewording your ailment, or checking your entered doctor's name...<p></div>`);
   }
   $(".doctor-info").click(function(){
-    $("#recent").append(`<p>${$(this).find("h3").html()}</p>`);
-    console.log("is this click working!")
+    // $("#recent").append(`<p>${$(this).find("h3").html()}</p>`);
+    // console.log("is this click working!")
 
     $(this).find(".doctor-details").toggleClass("display-details");
   });
+
 };
 
 ///////////////////
