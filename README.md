@@ -1,16 +1,16 @@
 # Medic!
-## A Doctor Search Application (Asynchrony and APIs Code Review _12.01.2017_)
-### By Kimberly Bordon
+### A Doctor Search Application (Asynchrony and APIs Code Review _12.01.2017_)
+#### By Kimberly Bordon
 
 ## Description
-_This is an application that will allow a user to retrieve a list of up to 10 doctors in proximity to Portland, OR. The user can enter their health concern and/or a specific doctor's name, and the app will use Javascript to call an API to retrieve doctors that best match the user's input. If the API's response is successful it will show either a list of doctors, or a message saying none matched the search. If the API does not return a successful response, the page will instead display an error message detailing why the request failed._
+_This is an application that will allow a user to retrieve a list of up to 10 doctors in proximity to Portland, OR. The user can enter their health concern and/or a specific doctor's name, and the app will use Javascript to call an API to retrieve doctors that best match the user's input. If the API's response is successful it will show either a list of doctors, or a message saying none matched the search. If the API does not return a successful response, the page will instead display a brief error message why the request failed._
 
 ## Specs
-| Behavior | Input | Output |
+| Behavior | Input Example | Output Example |
 |-|-|-|
-| The User can enter in a medical issue, such as "back pain", and they will receive a list of doctors in the Portland area. | User enters:<br> "back pain" | Search returns list of doctors by name |
-| The User can enter in a name of a doctor, full or partial, and they will receive a list of the doctors in the Portland area closest to their search. | User enters: "Nick Riviera" | Search returns list of doctors by name |
-| The User can enter in either a medical issue and/or doctor name, and they will receive a list of doctors. | User enters: <br> "Angela Ziegler" <br> "low health points" | Search returns list of doctors by name. |
+| The User can enter in a medical issue, such as "back pain", and they will receive a list of doctors in the Portland area. | User enters:<br> "back pain" | Search displays list of doctors |
+| The User can enter in a name of a doctor, full or partial, and they will receive a list of the doctors in the Portland area closest to their search. | User enters: "Nick Riviera" | Search displays list of doctors |
+| The User can enter in either a medical issue and/or doctor name, and they will receive a list of doctors. | User enters: <br> "Angela Ziegler" <br> "low health points" | Search displays list of doctors |
 | The User can enter a medical issue and/or doctor name, and if none are found, then the app will display that information. | User enters: <br> "Zoidberg" | Page shows message: "Sorry, your search returned 0 results. Please adjust your search entries, and try again!" |
 | If the User's search results in an error, it will display the error. | User enters a search, and page creates a bad request. | Page shows message: <br> "Error! Please enter a valid search." |
 | The User can click on one of the Doctor's names on the result list for more of that doctor's information. | User clicks "Nick Riviera" | Page displays more information in that space: <br> Nick Riviera <br>Accepting new patients: yes<br> A Totally Safe Clinic<br> 44 Bow Street<br>Portland, OR<br>91234<br>1-600-DOCTORB<br>http://doctorb.com<br> IMG*<br>bio* |
@@ -37,7 +37,7 @@ $ bower install
 
 ### ATTENTION: Before you run any code beyond this point, please read the following.
 
-This app uses the BetterDoctor API key which must be stored in an .env file in the top level of the repository. This repository does _not_ with come with its own `.env` file, and will specifically exclude any from commits in the `.gitignore` file.
+This app uses the BetterDoctor API key which must be stored in an `.env` file in the top level of the repository. When cloned, this repository does _not_ with come with its own `.env` file, and will specifically exclude any from commits in the `.gitignore` file.
 
 * **You must make this file with _your own API key_**, which you can obtain by visiting the [BetterDoctor API](https://developer.betterdoctor.com/) website, and clicking _"Get a free API key"_.
 * Fill out their form, and your API key should be listed on the front page or under _My Account > Applications_.
@@ -69,7 +69,7 @@ $ gulp serve
 
 
 ## Known Bugs
-There currently no known bugs.
+There are currently no *known* bugs. (😉)
 
 ## Technology Used
 * [BetterDoctor API](https://developer.betterdoctor.com/)
