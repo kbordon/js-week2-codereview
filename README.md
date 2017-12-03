@@ -20,9 +20,10 @@ _This is an application that will allow a user to retrieve a list of up to 10 do
 |-|
 | The app will keep track of doctors that were viewed, and allow the user to click to view that doctors information. | User clicks doctor in recently viewed list. | Page display's doctor's information. |
 
-* At the moment when a doctor's information is displayed, if it is clicked again, it automatically hides the display. Should make it so they click a button specifically to hide the display.
+* **edit:** Doctor's information now displayed by clicking plus sign. ~~At the moment when a doctor's information is displayed, if it is clicked again, it automatically hides the display. Should make it so they click a button specifically to hide the display.~~
 * Some of the details are fairly long, there should be a button once you scroll down a certain point that will appear and take you to the top of the page.
 * Change request and display to accommodate more than maximum of 10
+* Add pictures, if the API doesn't ban us...
 
 ## Setup/Install
 
