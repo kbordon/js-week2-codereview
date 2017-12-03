@@ -17,7 +17,7 @@ _This is an application that will allow a user to retrieve a list of up to 10 do
 
 ### Wishlist
 | Behavior | Input | Output |
-|-|
+|-|-|-|
 | The app will keep track of doctors that were viewed, and allow the user to click to view that doctors information. | User clicks doctor in recently viewed list. | Page display's doctor's information. |
 
 * **edit:** Doctor's information now displayed by clicking plus sign. ~~At the moment when a doctor's information is displayed, if it is clicked again, it automatically hides the display. Should make it so they click a button specifically to hide the display.~~
