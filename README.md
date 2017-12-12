@@ -87,3 +87,10 @@ _Email Kimberly at [kbordon@gmail.com](mailto:kbordon@gmail.com) for comments, q
 *This software is licensed under the MIT license.*
 
 Copyright © 2017 **Kimberly Bordon**
+
+to refactor the code!
+I really liked how you thought to group the practices. It's also awesome that you added a scrollbar to the bio. Once again, you really deserved that golden dino! It's clear that you're considering how you can best implement the prompt before starting to code. Great job!
+
+To clean up your code, you could slim down the code in the then() method by writing a new class for the doctor object that contains a few class methods. For instance, lines 59-84 are responsible for digging out the practices for each doctor. Instead, you could create a method on the Doctor class that would generate a list of practices for a particular doctor, and then call that method on line 59. Ideally, methods should be no more than 10 lines long. This makes our code more readable, because our methods will refer to other methods, which should have descriptive names that clearly indicate the actions they perform. So, when someone reads our code, they should essentially be able to follow the method calls and not read any of the logic and still know what the app is doing. If you refactored your code, your final code could look something like:
+
+promiseDrs.then(function(response){ let body = JSON.parse(response); let drResults = []; if (body.meta.count !== 0){ body.data.forEach(function(doctor){ let newDoctor = new Doctor(doctor); newDoctor.getPractices(); drResults.push(newDoctor); }); } displayData(drResults); return drResults; }, function(error) { let errorBody = JSON.parse(error); console.log(errorBody); displayError(errorBody.meta.message, errorBody.meta.httpstatuscode); }); }
