@@ -91,7 +91,7 @@ export class ApplicationModule{
       return drResults;
     }, function(error) {
       let errorBody = JSON.parse(error);
-      console.log(errorBody);
+      // console.log(errorBody);
       displayError(errorBody.meta.message, errorBody.meta.http_status_code);
     });
 
