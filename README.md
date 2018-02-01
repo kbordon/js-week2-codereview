@@ -5,6 +5,8 @@
 ## Description
 _This is an application that will allow a user to retrieve a list of up to 10 doctors in proximity to Portland, OR. The user can enter their health concern and/or a specific doctor's name, and the app will use Javascript to call an API to retrieve doctors that best match the user's input. If the API's response is successful it will show either a list of doctors, or a message saying none matched the search. If the API does not return a successful response, the page will instead display a brief error message why the request failed._
 
+[Screenshots](https://github.com/kbordon/js-week2-codereview/wiki/Screenshots)
+
 ## Specs
 | Behavior | Input Example | Output Example |
 |-|-|-|
